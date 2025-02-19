@@ -1,0 +1,173 @@
+:root {
+    --primary: #faf7f5;
+    --bg: #010101;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg);
+    color: white;
+    //* min-height: 2000px; *// 
+}
+
+
+/* Jika navbar-logo adalah gambar */
+.navbar .navbar-logo img {
+    width: 50px;
+    /* Sesuaikan dengan kebutuhan */
+    height: auto;
+    /* Menjaga proporsi */
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 7%;
+    background-color: rgba(1, 1, 1, 0.8);
+    border-bottom: 1px solid var(--primary);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+.navbar .navbar-nav a {
+    color: #fff;
+    display: inline-block;
+    font-size: 1.3rem;
+    margin: 0 0.8rem;
+
+}
+
+.navbar .navbar-nav a:hover {
+    color: seagreen;
+}
+
+.navbar .navbar-nav a::after {
+    content: '';
+    display: block;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.1rem solid seagreen;
+    transform: scaleX(0); //* membuat garis di bawah nav menghilang sebelum di gunakan *//
+    transition: 0.2s linear; //* transisi yang di gunakan untuk membuat garis *//
+}
+
+.navbar .navbar-nav a:hover::after {
+    transform: scaleX(0.5); //* ini membuat garis dibawah nav  terlihat setelah di gunakan*//
+
+}
+
+.navbar .navbar-extra a {
+    color: #fff;
+    margin: 0 0.4rem;
+}
+
+.navbar .navbar-extra a:hover {
+    color: seagreen; //* mengubah warna nav yang akan di penvet *//
+}
+
+#hamburger-menu {
+    display: none; //* berfungsi untuk menampilkan atau menghilangkan element *//
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: url('../img/header.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero::after {
+    content:'';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(1, 1, 3, 1) 6%, rgba(255, 255, 255, 0) 30%);
+}
+
+.hero .content {
+    padding: 1.4rem 7%;
+    max-width: 60rem;
+}
+.hero .content h1 {
+    font-size: 5em;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(1, 1, 3, 0,5);
+}
+/* Media Queris */
+//* untuk menyesuaikan tampilan *//
+/* Leptop */
+@media (max-width: 1366px) {
+    html {
+        font-size: 75%;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    html {
+        font-size: 62.5%;
+    }
+
+    #hamburger-menu {
+        display: inline-block;
+    }
+
+    //* untuk menghilangkan menu saat di buka di tablet dan hp,dan menjadikan side bar *//
+    .navbar .navbar-nav {
+        position: absolute; //* pakai absolute biar mudah di atur nanti *//
+        top: 100%; //* agar nempel ke atas *//
+        right: -100%; //* agar keluar layar jika 0 maka hanya akan berada di kanan *//
+        background-color: #fff; //* backround untuk side bar *//
+        width: 30rem; //* lebar side bar*//
+        height: 100vh; //* tinggi side bar *//
+        transition: 0.3s; //* waktu transisi yang akan di gunakan *//
+    }
+
+    //*untuk membuat side bar muncul saat humburger menu di klik*//
+    .navbar .navbar-nav.active {
+        right: 0;
+    }
+
+    .navbar .navbar-nav a {
+        color: #010101;
+        display: block; //* display blok akan membuat element turun kebawah*//
+        margin: 1.5rem;
+        padding: 0.5;
+        font-size: 2rem;
+    }
+
+    //* untuk mengatur garis di bawah teks  di side bar*//
+    .navbar .navbar-nav a::after {
+        transform-origin: 0 0;
+    }
+
+    .navbar .navbar-nav a:hover::after {
+        transform: scaleX(0.240)
+    }
+}
+
+/* Mobile Phone*/
+@media (max-width: 450px) {
+    html {
+        font-size: 55%;
+    }
+}
